@@ -1,0 +1,17 @@
+# Ambiente Virtual
+.venv/
+venv/
+ENV/
+
+# Bancos de dados e dados pesados
+*.db
+*.sqlite
+data/banco_oraculo.db
+banco_oraculo.db
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+
+# Configurações do editor
+.vscode/
