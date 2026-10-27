@@ -1,20 +1,35 @@
+import os
+import sys
 import streamlit as st
 import pandas as pd
 import sqlite3
 import plotly.express as px
 import plotly.graph_objects as go
 
-# Configuração da página
-st.set_page_config(
-    page_title="Clima_Tech - Monitoramento Climático Goiás",
-    page_icon="🌤️",
-    layout="wide"
-)
+# Define a raiz real do projeto (um nível acima da pasta app/)
+DIRETORIO_APP = os.path.dirname(os.path.abspath(__file__))
+DIRETORIO_RAIZ = os.path.dirname(DIRETORIO_APP)
 
-# Função para conectar ao banco de dados SQLite
+# Garante que a raiz do projeto está no sys.path
+if DIRETORIO_RAIZ not in sys.path:
+    sys.path.insert(0, DIRETORIO_RAIZ)
+
+# Caminho absoluto da base de dados na raiz
+CAMINHO_BANCO = os.path.join(DIRETORIO_RAIZ, "data", "banco_oraculo.db")
+
 @st.cache_data
 def carregar_dados():
-    conexao = sqlite3.connect("banco_oraculo.db")
+    # Se a base de dados não existir na nuvem, executa o pipeline diretamente
+    if not os.path.exists(CAMINHO_BANCO):
+        with st.spinner("Base de dados ausente. Baixando dados via API e gerando banco..."):
+            os.makedirs(os.path.join(DIRETORIO_RAIZ, "data"), exist_ok=True)
+            
+            # Executa o script main.py a partir da raiz do projeto
+            import subprocess
+            caminho_main = os.path.join(DIRETORIO_RAIZ, "main.py")
+            subprocess.run([sys.executable, caminho_main], cwd=DIRETORIO_RAIZ, check=True)
+
+    conexao = sqlite3.connect(CAMINHO_BANCO)
     df = pd.read_sql_query("SELECT * FROM clima_historico", conexao)
     conexao.close()
     
@@ -25,6 +40,7 @@ def carregar_dados():
 # Título e cabeçalho
 st.title("🌤️ Clima_Tech: Análise Climática de Goiás")
 st.markdown("Painel de monitoramento e análise meteorológica construído com dados do **ERA5 / Open-Meteo**.")
+st.markdown("EM DESENVOLVIMENTO😎")
 
 # Carregar os dados
 try:
@@ -94,4 +110,4 @@ try:
 
 except Exception as e:
     st.error(f"Erro ao carregar dados do banco: {e}")
-    st.info("Certifique-se de que rodou o 'python main.py' antes para gerar o 'banco_oraculo.db'.")
+    st.info("Certifique-se de que o pipeline executou e gerou o 'data/banco_oraculo.db'.")
