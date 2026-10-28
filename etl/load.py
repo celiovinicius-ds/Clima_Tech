@@ -1,15 +1,18 @@
-import sqlite3
+import os
 import pandas as pd
 
-def obter_conexao(caminho_banco="banco_oraculo.db"):
+def salvar_em_parquet(df, ano=2026):
     """
-    Cria ou conecta ao banco de dados SQLite local.
+    Grava os dados consolidados em formato colunar Parquet de alta performance.
     """
-    return sqlite3.connect(caminho_banco)
-
-def carregar_dados(df, nome_tabela, conexao, modo="append"):
-    """
-    Grava o DataFrame na tabela correspondente.
-    Modos comuns: 'append' (acrescenta registros) ou 'replace' (recria tabela).
-    """
-    df.to_sql(name=nome_tabela, con=conexao, if_exists=modo, index=False)
+    if df.empty:
+        print("[AVISO] Nenhum dado para salvar.")
+        return
+        
+    os.makedirs("data", exist_ok=True)
+    caminho_arquivo = os.path.join("data", f"clima_{ano}.parquet")
+    
+    # Salva com compressão snappy
+    df.to_parquet(caminho_arquivo, index=False, engine="pyarrow")
+    tamanho_mb = os.path.getsize(caminho_arquivo) / (1024 * 1024)
+    print(f"[SUCESSO] Dados salvos em '{caminho_arquivo}' ({tamanho_mb:.2f} MB)")

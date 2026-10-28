@@ -1,50 +1,35 @@
-import requests
 import time
+import requests
 
-def extrair_municipios_ibge(uf_id=52):
-    """
-    Busca a lista completa de municípios de Goiás.
-    Nota: Se a API padrão não retornar lat/lon, integramos com a base de coordenadas do IBGE na etapa de transformação.
-    """
-    url = f"https://servicodados.ibge.gov.br/api/v1/localidades/estados/{uf_id}/municipios"
-    resposta = requests.get(url, timeout=15)
-    resposta.raise_for_status()
-    return resposta.json()
+URL_OPEN_METEO = "https://archive-api.open-meteo.com/v1/archive"
 
-def extrair_clima_lote(lista_municipios, data_inicio, data_fim):
+def extrair_clima_ano(codigo_ibge, nome_municipio, lat, lon, ano=2026):
     """
-    Faz um loop pelos municípios puxando o histórico climático completo da Open-Meteo.
+    Extrai dados diários da Open-Meteo para um município específico em um determinado ano.
     """
-    historico_completo = []
+    parametros = {
+        "latitude": lat,
+        "longitude": lon,
+        "start_date": f"{ano}-01-01",
+        "end_date": f"{ano}-12-31",
+        "daily": [
+            "temperature_2m_max",
+            "temperature_2m_min",
+            "temperature_2m_mean",
+            "precipitation_sum",
+            "wind_speed_10m_max",
+            "shortwave_radiation_sum"
+        ],
+        "timezone": "America/Sao_Paulo"
+    }
     
-    for mun in lista_municipios:
-        # Pega as coordenadas (exemplo de chaves, ajustamos conforme o JSON real na transformação)
-        lat = mun.get('latitude') 
-        lon = mun.get('longitude')
-        nome = mun.get('nome')
-        
-        print(f"Extraindo dados de {nome}...")
-        
-        url = "https://archive-api.open-meteo.com/v1/archive"
-        parametros = {
-            "latitude": lat,
-            "longitude": lon,
-            "start_date": data_inicio,
-            "end_date": data_fim,
-            "daily": ["temperature_2m_max", "temperature_2m_min", "precipitation_sum"],
-            "timezone": "America/Sao_Paulo"
-        }
-        
-        try:
-            resposta = requests.get(url, params=parametros, timeout=20)
-            resposta.raise_for_status()
-            dados = resposta.json()
-            dados['municipio'] = nome # Anexa o nome para não perdermos a referência
-            historico_completo.append(dados)
-        except Exception as e:
-            print(f"Erro ao extrair {nome}: {e}")
-            
-        # Pausa de 1 segundo para não sobrecarregar a API (Rate Limit)
-        time.sleep(1)
-        
-    return historico_completo
+    try:
+        resposta = requests.get(URL_OPEN_METEO, params=parametros, timeout=20)
+        resposta.raise_for_status()
+        dados = resposta.json()
+        dados["codigo_ibge"] = codigo_ibge
+        dados["municipio"] = nome_municipio
+        return dados
+    except Exception as erro:
+        print(f"[ERRO] Falha ao extrair {nome_municipio} ({ano}): {erro}")
+        return None
