@@ -1,0 +1,1478 @@
+[
+  {
+    "municipio": "Abadia de Goiás",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Abadiânia",
+    "wmo": "A037",
+    "estacao": "SILVANIA",
+    "csv": "INMET_CO_GO_A037_SILVANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Acreúna",
+    "wmo": "A027",
+    "estacao": "PARAUNA",
+    "csv": "INMET_CO_GO_A027_PARAUNA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Adelândia",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Água Fria de Goiás",
+    "wmo": "A024",
+    "estacao": "ALTO PARAISO DE GOIAS",
+    "csv": "INMET_CO_GO_A024_ALTO PARAISO DE GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Água Limpa",
+    "wmo": "A003",
+    "estacao": "MORRINHOS",
+    "csv": "INMET_CO_GO_A003_MORRINHOS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Águas Lindas de Goiás",
+    "wmo": "A012",
+    "estacao": "LUZIANIA",
+    "csv": "INMET_CO_GO_A012_LUZIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Alexânia",
+    "wmo": "A012",
+    "estacao": "LUZIANIA",
+    "csv": "INMET_CO_GO_A012_LUZIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Aloândia",
+    "wmo": "A003",
+    "estacao": "MORRINHOS",
+    "csv": "INMET_CO_GO_A003_MORRINHOS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Alto Horizonte",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Alto Paraíso de Goiás",
+    "wmo": "A024",
+    "estacao": "ALTO PARAISO DE GOIAS",
+    "csv": "INMET_CO_GO_A024_ALTO PARAISO DE GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Alvorada do Norte",
+    "wmo": "A017",
+    "estacao": "POSSE",
+    "csv": "INMET_CO_GO_A017_POSSE_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Amaralina",
+    "wmo": "A005",
+    "estacao": "PORANGATU",
+    "csv": "INMET_CO_GO_A005_PORANGATU_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Americano do Brasil",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Amorinópolis",
+    "wmo": "A028",
+    "estacao": "IPORA",
+    "csv": "INMET_CO_GO_A028_IPORA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Anápolis",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Anhanguera",
+    "wmo": "A034",
+    "estacao": "CATALAO",
+    "csv": "INMET_CO_GO_A034_CATALAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Anicuns",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Aparecida de Goiânia",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Aparecida do Rio Doce",
+    "wmo": "A025",
+    "estacao": "RIO VERDE",
+    "csv": "INMET_CO_GO_A025_RIO VERDE_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Aporé",
+    "wmo": "A016",
+    "estacao": "JATAI",
+    "csv": "INMET_CO_GO_A016_JATAI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Araçu",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Aragarças",
+    "wmo": "A013",
+    "estacao": "ARAGARCAS",
+    "csv": "INMET_CO_GO_A013_ARAGARCAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Aragoiânia",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Araguapaz",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Arenópolis",
+    "wmo": "A028",
+    "estacao": "IPORA",
+    "csv": "INMET_CO_GO_A028_IPORA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Aruanã",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Aurilândia",
+    "wmo": "A027",
+    "estacao": "PARAUNA",
+    "csv": "INMET_CO_GO_A027_PARAUNA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Avelinópolis",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Baliza",
+    "wmo": "A013",
+    "estacao": "ARAGARCAS",
+    "csv": "INMET_CO_GO_A013_ARAGARCAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Barro Alto",
+    "wmo": "A022",
+    "estacao": "GOIANESIA",
+    "csv": "INMET_CO_GO_A022_GOIANESIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Bela Vista de Goiás",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Bom Jardim de Goiás",
+    "wmo": "A013",
+    "estacao": "ARAGARCAS",
+    "csv": "INMET_CO_GO_A013_ARAGARCAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Bom Jesus de Goiás",
+    "wmo": "A035",
+    "estacao": "ITUMBIARA",
+    "csv": "INMET_CO_GO_A035_ITUMBIARA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Bonfinópolis",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Bonópolis",
+    "wmo": "A005",
+    "estacao": "PORANGATU",
+    "csv": "INMET_CO_GO_A005_PORANGATU_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Brazabrantes",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Britânia",
+    "wmo": "A028",
+    "estacao": "IPORA",
+    "csv": "INMET_CO_GO_A028_IPORA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Buriti Alegre",
+    "wmo": "A035",
+    "estacao": "ITUMBIARA",
+    "csv": "INMET_CO_GO_A035_ITUMBIARA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Buriti de Goiás",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Buritinópolis",
+    "wmo": "A017",
+    "estacao": "POSSE",
+    "csv": "INMET_CO_GO_A017_POSSE_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Cabeceiras",
+    "wmo": "A056",
+    "estacao": "CRISTALINA (FAZENDA SANTA MONICA)",
+    "csv": "INMET_CO_GO_A056_CRISTALINA (FAZENDA SANTA MONICA)_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Cachoeira Alta",
+    "wmo": "A011",
+    "estacao": "SAO SIMAO",
+    "csv": "INMET_CO_GO_A011_SAO SIMAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Cachoeira de Goiás",
+    "wmo": "A027",
+    "estacao": "PARAUNA",
+    "csv": "INMET_CO_GO_A027_PARAUNA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Cachoeira Dourada",
+    "wmo": "A035",
+    "estacao": "ITUMBIARA",
+    "csv": "INMET_CO_GO_A035_ITUMBIARA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Caçu",
+    "wmo": "A011",
+    "estacao": "SAO SIMAO",
+    "csv": "INMET_CO_GO_A011_SAO SIMAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Caiapônia",
+    "wmo": "A023",
+    "estacao": "CAIAPONIA",
+    "csv": "INMET_CO_GO_A023_CAIAPONIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Caldas Novas",
+    "wmo": "A003",
+    "estacao": "MORRINHOS",
+    "csv": "INMET_CO_GO_A003_MORRINHOS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Caldazinha",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Campestre de Goiás",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Campinaçu",
+    "wmo": "A005",
+    "estacao": "PORANGATU",
+    "csv": "INMET_CO_GO_A005_PORANGATU_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Campinorte",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Campo Alegre de Goiás",
+    "wmo": "A034",
+    "estacao": "CATALAO",
+    "csv": "INMET_CO_GO_A034_CATALAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Campo Limpo de Goiás",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Campos Belos",
+    "wmo": "A032",
+    "estacao": "MONTE ALEGRE DE GOIAS",
+    "csv": "INMET_CO_GO_A032_MONTE ALEGRE DE GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Campos Verdes",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Carmo do Rio Verde",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Castelândia",
+    "wmo": "A025",
+    "estacao": "RIO VERDE",
+    "csv": "INMET_CO_GO_A025_RIO VERDE_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Catalão",
+    "wmo": "A034",
+    "estacao": "CATALAO",
+    "csv": "INMET_CO_GO_A034_CATALAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Caturaí",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Cavalcante",
+    "wmo": "A024",
+    "estacao": "ALTO PARAISO DE GOIAS",
+    "csv": "INMET_CO_GO_A024_ALTO PARAISO DE GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Ceres",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Cezarina",
+    "wmo": "A029",
+    "estacao": "EDEIA",
+    "csv": "INMET_CO_GO_A029_EDEIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Chapadão do Céu",
+    "wmo": "A016",
+    "estacao": "JATAI",
+    "csv": "INMET_CO_GO_A016_JATAI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Cidade Ocidental",
+    "wmo": "A012",
+    "estacao": "LUZIANIA",
+    "csv": "INMET_CO_GO_A012_LUZIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Cocalzinho de Goiás",
+    "wmo": "A022",
+    "estacao": "GOIANESIA",
+    "csv": "INMET_CO_GO_A022_GOIANESIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Colinas do Sul",
+    "wmo": "A024",
+    "estacao": "ALTO PARAISO DE GOIAS",
+    "csv": "INMET_CO_GO_A024_ALTO PARAISO DE GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Córrego do Ouro",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Corumbá de Goiás",
+    "wmo": "A022",
+    "estacao": "GOIANESIA",
+    "csv": "INMET_CO_GO_A022_GOIANESIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Corumbaíba",
+    "wmo": "A034",
+    "estacao": "CATALAO",
+    "csv": "INMET_CO_GO_A034_CATALAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Cristalina",
+    "wmo": "A036",
+    "estacao": "CRISTALINA",
+    "csv": "INMET_CO_GO_A036_CRISTALINA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Cristianópolis",
+    "wmo": "A033",
+    "estacao": "PIRES DO RIO",
+    "csv": "INMET_CO_GO_A033_PIRES DO RIO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Crixás",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Cromínia",
+    "wmo": "A029",
+    "estacao": "EDEIA",
+    "csv": "INMET_CO_GO_A029_EDEIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Cumari",
+    "wmo": "A034",
+    "estacao": "CATALAO",
+    "csv": "INMET_CO_GO_A034_CATALAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Damianópolis",
+    "wmo": "A017",
+    "estacao": "POSSE",
+    "csv": "INMET_CO_GO_A017_POSSE_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Damolândia",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Davinópolis",
+    "wmo": "A034",
+    "estacao": "CATALAO",
+    "csv": "INMET_CO_GO_A034_CATALAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Diorama",
+    "wmo": "A028",
+    "estacao": "IPORA",
+    "csv": "INMET_CO_GO_A028_IPORA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Divinópolis de Goiás",
+    "wmo": "A032",
+    "estacao": "MONTE ALEGRE DE GOIAS",
+    "csv": "INMET_CO_GO_A032_MONTE ALEGRE DE GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Doverlândia",
+    "wmo": "A023",
+    "estacao": "CAIAPONIA",
+    "csv": "INMET_CO_GO_A023_CAIAPONIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Edealina",
+    "wmo": "A029",
+    "estacao": "EDEIA",
+    "csv": "INMET_CO_GO_A029_EDEIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Edéia",
+    "wmo": "A029",
+    "estacao": "EDEIA",
+    "csv": "INMET_CO_GO_A029_EDEIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Estrela do Norte",
+    "wmo": "A005",
+    "estacao": "PORANGATU",
+    "csv": "INMET_CO_GO_A005_PORANGATU_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Faina",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Fazenda Nova",
+    "wmo": "A028",
+    "estacao": "IPORA",
+    "csv": "INMET_CO_GO_A028_IPORA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Firminópolis",
+    "wmo": "A027",
+    "estacao": "PARAUNA",
+    "csv": "INMET_CO_GO_A027_PARAUNA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Flores de Goiás",
+    "wmo": "A024",
+    "estacao": "ALTO PARAISO DE GOIAS",
+    "csv": "INMET_CO_GO_A024_ALTO PARAISO DE GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Formosa",
+    "wmo": "A056",
+    "estacao": "CRISTALINA (FAZENDA SANTA MONICA)",
+    "csv": "INMET_CO_GO_A056_CRISTALINA (FAZENDA SANTA MONICA)_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Formoso",
+    "wmo": "A005",
+    "estacao": "PORANGATU",
+    "csv": "INMET_CO_GO_A005_PORANGATU_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Gameleira de Goiás",
+    "wmo": "A037",
+    "estacao": "SILVANIA",
+    "csv": "INMET_CO_GO_A037_SILVANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Goianápolis",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Goiandira",
+    "wmo": "A034",
+    "estacao": "CATALAO",
+    "csv": "INMET_CO_GO_A034_CATALAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Goianésia",
+    "wmo": "A022",
+    "estacao": "GOIANESIA",
+    "csv": "INMET_CO_GO_A022_GOIANESIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Goiânia",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Goianira",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Goiás",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Goiatuba",
+    "wmo": "A003",
+    "estacao": "MORRINHOS",
+    "csv": "INMET_CO_GO_A003_MORRINHOS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Gouvelândia",
+    "wmo": "A011",
+    "estacao": "SAO SIMAO",
+    "csv": "INMET_CO_GO_A011_SAO SIMAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Guapó",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Guaraíta",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Guarani de Goiás",
+    "wmo": "A017",
+    "estacao": "POSSE",
+    "csv": "INMET_CO_GO_A017_POSSE_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Guarinos",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Heitoraí",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Hidrolândia",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Hidrolina",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Iaciara",
+    "wmo": "A017",
+    "estacao": "POSSE",
+    "csv": "INMET_CO_GO_A017_POSSE_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Inaciolândia",
+    "wmo": "A035",
+    "estacao": "ITUMBIARA",
+    "csv": "INMET_CO_GO_A035_ITUMBIARA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Indiara",
+    "wmo": "A029",
+    "estacao": "EDEIA",
+    "csv": "INMET_CO_GO_A029_EDEIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Inhumas",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Ipameri",
+    "wmo": "A033",
+    "estacao": "PIRES DO RIO",
+    "csv": "INMET_CO_GO_A033_PIRES DO RIO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Ipiranga de Goiás",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Iporá",
+    "wmo": "A028",
+    "estacao": "IPORA",
+    "csv": "INMET_CO_GO_A028_IPORA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Israelândia",
+    "wmo": "A028",
+    "estacao": "IPORA",
+    "csv": "INMET_CO_GO_A028_IPORA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Itaberaí",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Itaguari",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Itaguaru",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Itajá",
+    "wmo": "A011",
+    "estacao": "SAO SIMAO",
+    "csv": "INMET_CO_GO_A011_SAO SIMAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Itapaci",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Itapirapuã",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Itapuranga",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Itarumã",
+    "wmo": "A011",
+    "estacao": "SAO SIMAO",
+    "csv": "INMET_CO_GO_A011_SAO SIMAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Itauçu",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Itumbiara",
+    "wmo": "A035",
+    "estacao": "ITUMBIARA",
+    "csv": "INMET_CO_GO_A035_ITUMBIARA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Ivolândia",
+    "wmo": "A028",
+    "estacao": "IPORA",
+    "csv": "INMET_CO_GO_A028_IPORA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Jandaia",
+    "wmo": "A027",
+    "estacao": "PARAUNA",
+    "csv": "INMET_CO_GO_A027_PARAUNA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Jaraguá",
+    "wmo": "A022",
+    "estacao": "GOIANESIA",
+    "csv": "INMET_CO_GO_A022_GOIANESIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Jataí",
+    "wmo": "A016",
+    "estacao": "JATAI",
+    "csv": "INMET_CO_GO_A016_JATAI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Jaupaci",
+    "wmo": "A028",
+    "estacao": "IPORA",
+    "csv": "INMET_CO_GO_A028_IPORA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Jesúpolis",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Joviânia",
+    "wmo": "A003",
+    "estacao": "MORRINHOS",
+    "csv": "INMET_CO_GO_A003_MORRINHOS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Jussara",
+    "wmo": "A028",
+    "estacao": "IPORA",
+    "csv": "INMET_CO_GO_A028_IPORA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Lagoa Santa",
+    "wmo": "A011",
+    "estacao": "SAO SIMAO",
+    "csv": "INMET_CO_GO_A011_SAO SIMAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Leopoldo de Bulhões",
+    "wmo": "A037",
+    "estacao": "SILVANIA",
+    "csv": "INMET_CO_GO_A037_SILVANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Luziânia",
+    "wmo": "A012",
+    "estacao": "LUZIANIA",
+    "csv": "INMET_CO_GO_A012_LUZIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Mairipotaba",
+    "wmo": "A029",
+    "estacao": "EDEIA",
+    "csv": "INMET_CO_GO_A029_EDEIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Mambaí",
+    "wmo": "A017",
+    "estacao": "POSSE",
+    "csv": "INMET_CO_GO_A017_POSSE_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Mara Rosa",
+    "wmo": "A005",
+    "estacao": "PORANGATU",
+    "csv": "INMET_CO_GO_A005_PORANGATU_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Marzagão",
+    "wmo": "A003",
+    "estacao": "MORRINHOS",
+    "csv": "INMET_CO_GO_A003_MORRINHOS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Matrinchã",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Maurilândia",
+    "wmo": "A025",
+    "estacao": "RIO VERDE",
+    "csv": "INMET_CO_GO_A025_RIO VERDE_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Mimoso de Goiás",
+    "wmo": "A022",
+    "estacao": "GOIANESIA",
+    "csv": "INMET_CO_GO_A022_GOIANESIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Minaçu",
+    "wmo": "A005",
+    "estacao": "PORANGATU",
+    "csv": "INMET_CO_GO_A005_PORANGATU_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Mineiros",
+    "wmo": "A026",
+    "estacao": "MINEIROS",
+    "csv": "INMET_CO_GO_A026_MINEIROS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Moiporá",
+    "wmo": "A028",
+    "estacao": "IPORA",
+    "csv": "INMET_CO_GO_A028_IPORA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Monte Alegre de Goiás",
+    "wmo": "A032",
+    "estacao": "MONTE ALEGRE DE GOIAS",
+    "csv": "INMET_CO_GO_A032_MONTE ALEGRE DE GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Montes Claros de Goiás",
+    "wmo": "A028",
+    "estacao": "IPORA",
+    "csv": "INMET_CO_GO_A028_IPORA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Montividiu",
+    "wmo": "A025",
+    "estacao": "RIO VERDE",
+    "csv": "INMET_CO_GO_A025_RIO VERDE_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Montividiu do Norte",
+    "wmo": "A005",
+    "estacao": "PORANGATU",
+    "csv": "INMET_CO_GO_A005_PORANGATU_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Morrinhos",
+    "wmo": "A003",
+    "estacao": "MORRINHOS",
+    "csv": "INMET_CO_GO_A003_MORRINHOS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Morro Agudo de Goiás",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Mossâmedes",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Mozarlândia",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Mundo Novo",
+    "wmo": "A031",
+    "estacao": "SAO MIGUEL DO ARAGUAIA",
+    "csv": "INMET_CO_GO_A031_SAO MIGUEL DO ARAGUAIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Mutunópolis",
+    "wmo": "A005",
+    "estacao": "PORANGATU",
+    "csv": "INMET_CO_GO_A005_PORANGATU_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Nazário",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Nerópolis",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Niquelândia",
+    "wmo": "A022",
+    "estacao": "GOIANESIA",
+    "csv": "INMET_CO_GO_A022_GOIANESIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Nova América",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Nova Aurora",
+    "wmo": "A034",
+    "estacao": "CATALAO",
+    "csv": "INMET_CO_GO_A034_CATALAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Nova Crixás",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Nova Glória",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Nova Iguaçu de Goiás",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Nova Roma",
+    "wmo": "A032",
+    "estacao": "MONTE ALEGRE DE GOIAS",
+    "csv": "INMET_CO_GO_A032_MONTE ALEGRE DE GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Nova Veneza",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Novo Brasil",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Novo Gama",
+    "wmo": "A012",
+    "estacao": "LUZIANIA",
+    "csv": "INMET_CO_GO_A012_LUZIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Novo Planalto",
+    "wmo": "A005",
+    "estacao": "PORANGATU",
+    "csv": "INMET_CO_GO_A005_PORANGATU_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Orizona",
+    "wmo": "A033",
+    "estacao": "PIRES DO RIO",
+    "csv": "INMET_CO_GO_A033_PIRES DO RIO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Ouro Verde de Goiás",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Ouvidor",
+    "wmo": "A034",
+    "estacao": "CATALAO",
+    "csv": "INMET_CO_GO_A034_CATALAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Padre Bernardo",
+    "wmo": "A022",
+    "estacao": "GOIANESIA",
+    "csv": "INMET_CO_GO_A022_GOIANESIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Palestina de Goiás",
+    "wmo": "A023",
+    "estacao": "CAIAPONIA",
+    "csv": "INMET_CO_GO_A023_CAIAPONIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Palmeiras de Goiás",
+    "wmo": "A027",
+    "estacao": "PARAUNA",
+    "csv": "INMET_CO_GO_A027_PARAUNA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Palmelo",
+    "wmo": "A033",
+    "estacao": "PIRES DO RIO",
+    "csv": "INMET_CO_GO_A033_PIRES DO RIO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Palminópolis",
+    "wmo": "A027",
+    "estacao": "PARAUNA",
+    "csv": "INMET_CO_GO_A027_PARAUNA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Panamá",
+    "wmo": "A035",
+    "estacao": "ITUMBIARA",
+    "csv": "INMET_CO_GO_A035_ITUMBIARA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Paranaiguara",
+    "wmo": "A011",
+    "estacao": "SAO SIMAO",
+    "csv": "INMET_CO_GO_A011_SAO SIMAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Paraúna",
+    "wmo": "A027",
+    "estacao": "PARAUNA",
+    "csv": "INMET_CO_GO_A027_PARAUNA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Perolândia",
+    "wmo": "A026",
+    "estacao": "MINEIROS",
+    "csv": "INMET_CO_GO_A026_MINEIROS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Petrolina de Goiás",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Pilar de Goiás",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Piracanjuba",
+    "wmo": "A003",
+    "estacao": "MORRINHOS",
+    "csv": "INMET_CO_GO_A003_MORRINHOS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Piranhas",
+    "wmo": "A023",
+    "estacao": "CAIAPONIA",
+    "csv": "INMET_CO_GO_A023_CAIAPONIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Pirenópolis",
+    "wmo": "A022",
+    "estacao": "GOIANESIA",
+    "csv": "INMET_CO_GO_A022_GOIANESIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Pires do Rio",
+    "wmo": "A033",
+    "estacao": "PIRES DO RIO",
+    "csv": "INMET_CO_GO_A033_PIRES DO RIO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Planaltina",
+    "wmo": "A012",
+    "estacao": "LUZIANIA",
+    "csv": "INMET_CO_GO_A012_LUZIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Pontalina",
+    "wmo": "A003",
+    "estacao": "MORRINHOS",
+    "csv": "INMET_CO_GO_A003_MORRINHOS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Porangatu",
+    "wmo": "A005",
+    "estacao": "PORANGATU",
+    "csv": "INMET_CO_GO_A005_PORANGATU_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Porteirão",
+    "wmo": "A029",
+    "estacao": "EDEIA",
+    "csv": "INMET_CO_GO_A029_EDEIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Portelândia",
+    "wmo": "A026",
+    "estacao": "MINEIROS",
+    "csv": "INMET_CO_GO_A026_MINEIROS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Posse",
+    "wmo": "A017",
+    "estacao": "POSSE",
+    "csv": "INMET_CO_GO_A017_POSSE_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Professor Jamil",
+    "wmo": "A003",
+    "estacao": "MORRINHOS",
+    "csv": "INMET_CO_GO_A003_MORRINHOS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Quirinópolis",
+    "wmo": "A011",
+    "estacao": "SAO SIMAO",
+    "csv": "INMET_CO_GO_A011_SAO SIMAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Rialma",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Rianápolis",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Rio Quente",
+    "wmo": "A003",
+    "estacao": "MORRINHOS",
+    "csv": "INMET_CO_GO_A003_MORRINHOS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Rio Verde",
+    "wmo": "A025",
+    "estacao": "RIO VERDE",
+    "csv": "INMET_CO_GO_A025_RIO VERDE_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Rubiataba",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Sanclerlândia",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Santa Bárbara de Goiás",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Santa Cruz de Goiás",
+    "wmo": "A033",
+    "estacao": "PIRES DO RIO",
+    "csv": "INMET_CO_GO_A033_PIRES DO RIO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Santa Fé de Goiás",
+    "wmo": "A028",
+    "estacao": "IPORA",
+    "csv": "INMET_CO_GO_A028_IPORA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Santa Helena de Goiás",
+    "wmo": "A025",
+    "estacao": "RIO VERDE",
+    "csv": "INMET_CO_GO_A025_RIO VERDE_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Santa Isabel",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Santa Rita do Araguaia",
+    "wmo": "A026",
+    "estacao": "MINEIROS",
+    "csv": "INMET_CO_GO_A026_MINEIROS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Santa Rita do Novo Destino",
+    "wmo": "A022",
+    "estacao": "GOIANESIA",
+    "csv": "INMET_CO_GO_A022_GOIANESIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Santa Rosa de Goiás",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Santa Tereza de Goiás",
+    "wmo": "A005",
+    "estacao": "PORANGATU",
+    "csv": "INMET_CO_GO_A005_PORANGATU_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Santa Terezinha de Goiás",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Santo Antônio da Barra",
+    "wmo": "A025",
+    "estacao": "RIO VERDE",
+    "csv": "INMET_CO_GO_A025_RIO VERDE_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Santo Antônio de Goiás",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Santo Antônio do Descoberto",
+    "wmo": "A012",
+    "estacao": "LUZIANIA",
+    "csv": "INMET_CO_GO_A012_LUZIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "São Domingos",
+    "wmo": "A032",
+    "estacao": "MONTE ALEGRE DE GOIAS",
+    "csv": "INMET_CO_GO_A032_MONTE ALEGRE DE GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "São Francisco de Goiás",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "São João d'Aliança",
+    "wmo": "A024",
+    "estacao": "ALTO PARAISO DE GOIAS",
+    "csv": "INMET_CO_GO_A024_ALTO PARAISO DE GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "São João da Paraúna",
+    "wmo": "A027",
+    "estacao": "PARAUNA",
+    "csv": "INMET_CO_GO_A027_PARAUNA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "São Luís de Montes Belos",
+    "wmo": "A027",
+    "estacao": "PARAUNA",
+    "csv": "INMET_CO_GO_A027_PARAUNA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "São Luiz do Norte",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "São Miguel do Araguaia",
+    "wmo": "A031",
+    "estacao": "SAO MIGUEL DO ARAGUAIA",
+    "csv": "INMET_CO_GO_A031_SAO MIGUEL DO ARAGUAIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "São Miguel do Passa Quatro",
+    "wmo": "A037",
+    "estacao": "SILVANIA",
+    "csv": "INMET_CO_GO_A037_SILVANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "São Patrício",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "São Simão",
+    "wmo": "A011",
+    "estacao": "SAO SIMAO",
+    "csv": "INMET_CO_GO_A011_SAO SIMAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Senador Canedo",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Serranópolis",
+    "wmo": "A016",
+    "estacao": "JATAI",
+    "csv": "INMET_CO_GO_A016_JATAI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Silvânia",
+    "wmo": "A037",
+    "estacao": "SILVANIA",
+    "csv": "INMET_CO_GO_A037_SILVANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Simolândia",
+    "wmo": "A017",
+    "estacao": "POSSE",
+    "csv": "INMET_CO_GO_A017_POSSE_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Sítio d'Abadia",
+    "wmo": "A017",
+    "estacao": "POSSE",
+    "csv": "INMET_CO_GO_A017_POSSE_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Taquaral de Goiás",
+    "wmo": "A014",
+    "estacao": "GOIAS",
+    "csv": "INMET_CO_GO_A014_GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Teresina de Goiás",
+    "wmo": "A024",
+    "estacao": "ALTO PARAISO DE GOIAS",
+    "csv": "INMET_CO_GO_A024_ALTO PARAISO DE GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Terezópolis de Goiás",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Três Ranchos",
+    "wmo": "A034",
+    "estacao": "CATALAO",
+    "csv": "INMET_CO_GO_A034_CATALAO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Trindade",
+    "wmo": "A002",
+    "estacao": "GOIANIA",
+    "csv": "INMET_CO_GO_A002_GOIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Trombas",
+    "wmo": "A005",
+    "estacao": "PORANGATU",
+    "csv": "INMET_CO_GO_A005_PORANGATU_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Turvânia",
+    "wmo": "A027",
+    "estacao": "PARAUNA",
+    "csv": "INMET_CO_GO_A027_PARAUNA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Turvelândia",
+    "wmo": "A029",
+    "estacao": "EDEIA",
+    "csv": "INMET_CO_GO_A029_EDEIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Uirapuru",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Uruaçu",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Uruana",
+    "wmo": "A015",
+    "estacao": "ITAPACI",
+    "csv": "INMET_CO_GO_A015_ITAPACI_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Urutaí",
+    "wmo": "A033",
+    "estacao": "PIRES DO RIO",
+    "csv": "INMET_CO_GO_A033_PIRES DO RIO_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Valparaíso de Goiás",
+    "wmo": "A012",
+    "estacao": "LUZIANIA",
+    "csv": "INMET_CO_GO_A012_LUZIANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Varjão",
+    "wmo": "A029",
+    "estacao": "EDEIA",
+    "csv": "INMET_CO_GO_A029_EDEIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Vianópolis",
+    "wmo": "A037",
+    "estacao": "SILVANIA",
+    "csv": "INMET_CO_GO_A037_SILVANIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Vicentinópolis",
+    "wmo": "A029",
+    "estacao": "EDEIA",
+    "csv": "INMET_CO_GO_A029_EDEIA_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Vila Boa",
+    "wmo": "A024",
+    "estacao": "ALTO PARAISO DE GOIAS",
+    "csv": "INMET_CO_GO_A024_ALTO PARAISO DE GOIAS_01-01-2026_A_31-08-2026.CSV"
+  },
+  {
+    "municipio": "Vila Propício",
+    "wmo": "A022",
+    "estacao": "GOIANESIA",
+    "csv": "INMET_CO_GO_A022_GOIANESIA_01-01-2026_A_31-08-2026.CSV"
+  }
+]

@@ -1,51 +1,31 @@
+import json
+import os
 import pandas as pd
 
-def transformar_dados_clima(lista_respostas_api):
+def aplicar_calibracao(df_bruto):
     """
-    Transforma as respostas JSON da Open-Meteo em um DataFrame limpo e tipado.
+    Recebe o DataFrame da Open-Meteo e aplica a matemática de calibração 
+    (Bias Correction) baseada nas estações do INMET mapeadas.
     """
-    registros = []
-    
-    for item in lista_respostas_api:
-        if not item or "daily" not in item:
-            continue
-            
-        codigo_ibge = item.get("codigo_ibge")
-        municipio = item.get("municipio")
-        daily = item.get("daily", {})
-        
-        datas = daily.get("time", [])
-        temp_max = daily.get("temperature_2m_max", [])
-        temp_min = daily.get("temperature_2m_min", [])
-        temp_media = daily.get("temperature_2m_mean", [])
-        precipitacao = daily.get("precipitation_sum", [])
-        vento_max = daily.get("wind_speed_10m_max", [])
-        radiacao = daily.get("shortwave_radiation_sum", [])
-        
-        for i in range(len(datas)):
-            registros.append({
-                "codigo_ibge": codigo_ibge,
-                "municipio": municipio,
-                "data": datas[i],
-                "temp_max": temp_max[i] if i < len(temp_max) else None,
-                "temp_min": temp_min[i] if i < len(temp_min) else None,
-                "temp_media": temp_media[i] if i < len(temp_media) else None,
-                "chuva_mm": precipitacao[i] if i < len(precipitacao) else 0.0,
-                "vento_max_kmh": vento_max[i] if i < len(vento_max) else None,
-                "radiacao_mj": radiacao[i] if i < len(radiacao) else None
-            })
-            
-    df = pd.DataFrame(registros)
-    if df.empty:
-        return df
+    arq_map = os.path.join("data", "mapeamento_estacoes.json")
+    arq_fat = os.path.join("data", "fatores_calibracao.json")
 
-    # Tipagem e preenchimento
-    df["data"] = pd.to_datetime(df["data"])
-    df["chuva_mm"] = df["chuva_mm"].fillna(0.0)
+    if not os.path.exists(arq_map) or not os.path.exists(arq_fat):
+        print("[AVISO] Arquivos de calibração ausentes. Retornando dados brutos.")
+        return df_bruto
+
+    with open(arq_map, "r", encoding="utf-8") as f:
+        mapa = {item["municipio"]: item["wmo"] for item in json.load(f)}
     
-    # Feature Engineering para Machine Learning
-    df["amplitude_termica"] = df["temp_max"] - df["temp_min"]
-    df["mes"] = df["data"].dt.month
-    df["dia_do_ano"] = df["data"].dt.dayofyear
-    
-    return df
+    with open(arq_fat, "r", encoding="utf-8") as f:
+        fatores = json.load(f)
+
+    def corrigir(row):
+        wmo = mapa.get(row["municipio"])
+        if wmo and wmo in fatores:
+            # Soma a diferença histórica à temperatura que a API reportou hoje
+            row["temp_max"] = round(row["temp_max"] + fatores[wmo]["ajuste_tmax"], 1)
+            row["temp_min"] = round(row["temp_min"] + fatores[wmo]["ajuste_tmin"], 1)
+        return row
+
+    return df_bruto.apply(corrigir, axis=1)
