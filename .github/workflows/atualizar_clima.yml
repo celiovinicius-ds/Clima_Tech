@@ -1,37 +1,38 @@
-name: Atualização Diária ClimaTech
+name: Atualizacao Diaria do Clima
 
 on:
   schedule:
-    # 09:00 UTC corresponde exatamente às 06:00 (UTC-3 - Horário de Brasília)
-    - cron: '0 9 * * *'
-  workflow_dispatch: # Permite disparar o robô manualmente pelo GitHub quando quiser testar
+    # 09:00, 18:00 e 00:00 UTC equivalem a 06:00, 15:00 e 21:00 (Brasília)
+    - cron: '0 9,18,0 * * *'
+  workflow_dispatch: # Permite disparar manualmente pelo site do GitHub se quiser
 
 jobs:
-  executar-atualizacao:
+  atualizar-clima:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Permite que o robô faça commit e push de volta pro repo
 
     steps:
-      - name: Baixar repositório
-        uses: actions/checkout@v3
+      - name: Baixar código do repositório
+        uses: actions/checkout@v4
 
-      - name: Configurar Python 3.11
-        uses: actions/setup-python@v4
+      - name: Configurar Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Instalar dependências
+      - name: Instalar bibliotecas
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install pandas requests pyarrow
 
-      - name: Executar script diário
+      - name: Executar script de atualização
         run: |
-          python etl/atualizar_dia.py
+          python rascunho.py
 
-      - name: Salvar dados atualizados no repositório
+      - name: Salvar e subir dados atualizados
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/*.parquet
-          git commit -m "chore(dados): atualização automática diária [skip ci]" || exit 0
+          git add -f data/clima_2026.parquet
+          git commit -m "chore: atualizacao automatica das medicoes [skip ci]" || echo "Sem alteracoes para commitar"
           git push
