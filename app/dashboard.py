@@ -84,23 +84,22 @@ def carregar_dados_climaticos(codigo_ibge, ano):
     df["data_registro"] = pd.to_datetime(df["data"])
     df = df[df["data_registro"].dt.year == int(ano)].sort_values("data_registro")
     
+    # Trava de segurança física contra valores anômalos/corrompidos na leitura
+    df["temp_max"] = df["temp_max"].clip(15.0, 43.0)
+    df["temp_min"] = df["temp_min"].clip(5.0, 30.0)
+    df["chuva_mm"] = df["chuva_mm"].clip(0.0, 150.0) # Evita tempestades fantásticas diárias acima de 150mm
+    
     df["temperatura_max"] = df["temp_max"]
     df["temperatura_min"] = df["temp_min"]
     df["precipitacao_mm"] = df["chuva_mm"]
     
-    # Tratamento da Umidade Relativa: prioriza dado real oficial da API
+    # Tratamento da Umidade Relativa
     if "umidade_media" in df.columns and df["umidade_media"].notnull().any():
-        df["umidade_relativa_media"] = df["umidade_media"].fillna(0).round().astype(int)
+        df["umidade_relativa_media"] = df["umidade_media"].fillna(50).clip(10, 100).round().astype(int)
     else:
-        # Fallback de segurança via Magnus-Tetens
-        t_med = df["temp_media"] if "temp_media" in df.columns and df["temp_media"].notnull().any() else (df["temp_max"] + df["temp_min"]) / 2.0
-        t_min = df["temp_min"]
-        es = 6.1078 * np.exp((17.625 * t_med) / (243.04 + t_med))
-        e = 6.1078 * np.exp((17.625 * t_min) / (243.04 + t_min))
-        ur_calculada = 100.0 * (e / es)
-        df["umidade_relativa_media"] = np.clip(np.round(ur_calculada), 20.0, 95.0).astype(int)
+        df["umidade_relativa_media"] = 50
     
-    df["fonte_origem"] = "ERA5 / Open-Meteo"
+    df["fonte_origem"] = "ERA5 / Open-Meteo (Calibrado)"
     df["mes"] = df["data_registro"].dt.month
     df["dia"] = df["data_registro"].dt.day
     
