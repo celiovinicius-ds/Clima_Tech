@@ -88,17 +88,17 @@ def carregar_dados_climaticos(codigo_ibge, ano):
     df["temperatura_min"] = df["temp_min"]
     df["precipitacao_mm"] = df["chuva_mm"]
     
-    # Cálculo físico de Humidade Relativa Média (%) via Magnus-Tetens
-    t_med = df["temp_media"] if "temp_media" in df.columns and df["temp_media"].notnull().any() else (df["temp_max"] + df["temp_min"]) / 2.0
-    t_min = df["temp_min"]
-    
-    # Pressões de vapor saturado (es) e real (e)
-    es = 6.1078 * np.exp((17.625 * t_med) / (243.04 + t_med))
-    e = 6.1078 * np.exp((17.625 * t_min) / (243.04 + t_min))
-    
-    ur_calculada = 100.0 * (e / es)
-    # Arredondamento e conversão direta para número inteiro
-    df["umidade_relativa_media"] = np.clip(np.round(ur_calculada), 20.0, 95.0).astype(int)
+    # Tratamento da Umidade Relativa: prioriza dado real oficial da API
+    if "umidade_media" in df.columns and df["umidade_media"].notnull().any():
+        df["umidade_relativa_media"] = df["umidade_media"].fillna(0).round().astype(int)
+    else:
+        # Fallback de segurança via Magnus-Tetens
+        t_med = df["temp_media"] if "temp_media" in df.columns and df["temp_media"].notnull().any() else (df["temp_max"] + df["temp_min"]) / 2.0
+        t_min = df["temp_min"]
+        es = 6.1078 * np.exp((17.625 * t_med) / (243.04 + t_med))
+        e = 6.1078 * np.exp((17.625 * t_min) / (243.04 + t_min))
+        ur_calculada = 100.0 * (e / es)
+        df["umidade_relativa_media"] = np.clip(np.round(ur_calculada), 20.0, 95.0).astype(int)
     
     df["fonte_origem"] = "ERA5 / Open-Meteo"
     df["mes"] = df["data_registro"].dt.month
@@ -112,7 +112,7 @@ st.sidebar.title("🌦️ Filtros de Análise")
 df_municipios = carregar_municipios()
 
 if df_municipios.empty:
-    st.error("Ficheiro de dados não encontrado. Verifique se o caminho data/clima_2026.parquet existe.")
+    st.error("Arquivo de dados não encontrado. Verifique se o caminho data/clima_2026.parquet existe.")
     st.stop()
 
 municipio_selecionado = st.sidebar.selectbox(
@@ -126,7 +126,7 @@ codigo_ibge_selecionado = int(df_municipios.loc[df_municipios["nome_municipio"] 
 anos_disponiveis = carregar_anos_disponiveis(codigo_ibge_selecionado)
 
 if not anos_disponiveis:
-    st.warning("Nenhum registo encontrado para este município.")
+    st.warning("Nenhum registro encontrado para este município.")
     st.stop()
 
 ano_selecionado = st.sidebar.selectbox("Selecione o Ano:", options=anos_disponiveis, index=0)
@@ -135,8 +135,8 @@ ano_selecionado = st.sidebar.selectbox("Selecione o Ano:", options=anos_disponiv
 df_dados = carregar_dados_climaticos(codigo_ibge_selecionado, ano_selecionado)
 
 # Cabeçalho Principal
-st.title(f"📊 Painel Climático: {municipio_selecionado} - {ano_selecionado}")
-st.markdown("Monitorização meteorológica consolidada a partir da base histórica e reanálise **ERA5 / Open-Meteo**.")
+st.title(f"📊 Painel Climático: {municipio_selecionado} ({ano_selecionado})")
+st.markdown("Monitoramento meteorológico consolidado a partir da base histórica e reanálise **ERA5 / Open-Meteo**.")
 
 # Cartões com Extremos Anuais estilizados
 col1, col2, col3, col4 = st.columns(4)
@@ -159,7 +159,7 @@ with col1:
     <div class="kpi-card" style="border-left: 4px solid #FF4B4B;">
         <div class="kpi-title">🌡️ Temp. Máxima Absoluta</div>
         <div class="kpi-value" style="color: #FF4B4B;">{t_max_recorde:.1f} °C</div>
-        <div class="kpi-caption">Registada em: {data_max_str}</div>
+        <div class="kpi-caption">Registrada em: {data_max_str}</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -168,7 +168,7 @@ with col2:
     <div class="kpi-card" style="border-left: 4px solid #1C83E1;">
         <div class="kpi-title">❄️ Temp. Mínima Absoluta</div>
         <div class="kpi-value" style="color: #1C83E1;">{t_min_recorde:.1f} °C</div>
-        <div class="kpi-caption">Registada em: {data_min_str}</div>
+        <div class="kpi-caption">Registrada em: {data_min_str}</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -186,14 +186,14 @@ with col4:
     <div class="kpi-card" style="border-left: 4px solid #7E57C2;">
         <div class="kpi-title">⛈️ Maior Chuva Diária</div>
         <div class="kpi-value" style="color: #7E57C2;">{chuva_max_dia:.1f} mm</div>
-        <div class="kpi-caption">Registada em: {data_chuva_str}</div>
+        <div class="kpi-caption">Registrada em: {data_chuva_str}</div>
     </div>
     """, unsafe_allow_html=True)
 
 st.divider()
 
 # Gráficos Temporais Interativos
-tab1, tab2, tab3 = st.tabs(["📈 Temperaturas", "🌧️ Precipitação Diária", "💧 Humidade Relativa"])
+tab1, tab2, tab3 = st.tabs(["📈 Temperaturas", "🌧️ Precipitação Diária", "💧 Umidade Relativa"])
 
 with tab1:
     fig_temp = go.Figure()
@@ -238,19 +238,19 @@ with tab3:
             df_dados, 
             x="data_registro", 
             y="umidade_relativa_media", 
-            title=f"Humidade Relativa Média do Ar ({ano_selecionado})",
-            labels={"data_registro": "Data", "umidade_relativa_media": "Humidade (%)"},
+            title=f"Umidade Relativa Média do Ar ({ano_selecionado})",
+            labels={"data_registro": "Data", "umidade_relativa_media": "Umidade (%)"},
             color_discrete_sequence=["#2A9D8F"]
         )
         fig_umid.update_layout(template="plotly_white", hovermode="x unified")
         st.plotly_chart(fig_umid, use_container_width=True)
     else:
-        st.info("Dados de humidade relativa indisponíveis para este período.")
+        st.info("Dados de umidade relativa indisponíveis para este período.")
 
 st.divider()
 
 # Tabela Detalhada Mês a Mês
-st.subheader("🗓️ Detalhamento Mensal e Registos Diários")
+st.subheader("🗓️ Detalhamento Mensal e Registros Diários")
 
 meses_pt = {
     1: "Janeiro", 2: "Fevereiro", 3: "Março", 4: "Abril",
@@ -287,7 +287,6 @@ df_tabela_exibicao = df_mes[[
 ]].copy()
 
 df_tabela_exibicao["data_registro"] = df_tabela_exibicao["data_registro"].dt.strftime("%d/%m/%Y")
-# Garante a formatação inteira na coluna
 df_tabela_exibicao["umidade_relativa_media"] = df_tabela_exibicao["umidade_relativa_media"].astype(int)
 
 df_tabela_exibicao.rename(columns={
@@ -295,7 +294,7 @@ df_tabela_exibicao.rename(columns={
     "temperatura_max": "Temp. Máx (°C)",
     "temperatura_min": "Temp. Mín (°C)",
     "precipitacao_mm": "Chuva (mm)",
-    "umidade_relativa_media": "Humidade Média (%)",
+    "umidade_relativa_media": "Umidade Média (%)",
     "fonte_origem": "Fonte do Dado"
 }, inplace=True)
 
