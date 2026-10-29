@@ -1,1 +1,152 @@
-{}
+{
+  "A002": {
+    "ajuste_tmax": 1.68,
+    "ajuste_tmin": -1.22,
+    "ajuste_umidade": 5.81,
+    "fator_chuva": 1.3
+  },
+  "A037": {
+    "ajuste_tmax": 2.5,
+    "ajuste_tmin": 2.0,
+    "ajuste_umidade": -4.49,
+    "fator_chuva": 0.8
+  },
+  "A027": {
+    "ajuste_tmax": 1.64,
+    "ajuste_tmin": 0.09,
+    "ajuste_umidade": 3.93,
+    "fator_chuva": 0.8
+  },
+  "A014": {
+    "ajuste_tmax": 2.59,
+    "ajuste_tmin": -0.38,
+    "ajuste_umidade": 1.85,
+    "fator_chuva": 1.3
+  },
+  "A024": {
+    "ajuste_tmax": 2.41,
+    "ajuste_tmin": -1.2,
+    "ajuste_umidade": 5.41,
+    "fator_chuva": 0.8
+  },
+  "A003": {
+    "ajuste_tmax": 2.15,
+    "ajuste_tmin": 0.37,
+    "ajuste_umidade": -1.81,
+    "fator_chuva": 1.3
+  },
+  "A012": {
+    "ajuste_tmax": 0.78,
+    "ajuste_tmin": 0.21,
+    "ajuste_umidade": -0.84,
+    "fator_chuva": 0.8
+  },
+  "A017": {
+    "ajuste_tmax": 1.8,
+    "ajuste_tmin": 1.87,
+    "ajuste_umidade": -5.34,
+    "fator_chuva": 1.02
+  },
+  "A005": {
+    "ajuste_tmax": 1.89,
+    "ajuste_tmin": 0.02,
+    "ajuste_umidade": 3.61,
+    "fator_chuva": 1.23
+  },
+  "A028": {
+    "ajuste_tmax": 1.4,
+    "ajuste_tmin": -0.93,
+    "ajuste_umidade": 6.92,
+    "fator_chuva": 0.8
+  },
+  "A034": {
+    "ajuste_tmax": 1.28,
+    "ajuste_tmin": 0.75,
+    "ajuste_umidade": -5.1,
+    "fator_chuva": 0.8
+  },
+  "A025": {
+    "ajuste_tmax": 1.38,
+    "ajuste_tmin": -0.71,
+    "ajuste_umidade": 2.24,
+    "fator_chuva": 1.3
+  },
+  "A016": {
+    "ajuste_tmax": 1.44,
+    "ajuste_tmin": -1.21,
+    "ajuste_umidade": 10.71,
+    "fator_chuva": 1.3
+  },
+  "A013": {
+    "ajuste_tmax": 2.14,
+    "ajuste_tmin": 0.16,
+    "ajuste_umidade": 6.39,
+    "fator_chuva": 0.8
+  },
+  "A022": {
+    "ajuste_tmax": 1.08,
+    "ajuste_tmin": 0.33,
+    "ajuste_umidade": 0.36,
+    "fator_chuva": 0.8
+  },
+  "A035": {
+    "ajuste_tmax": 1.57,
+    "ajuste_tmin": -1.38,
+    "ajuste_umidade": 2.46,
+    "fator_chuva": 1.3
+  },
+  "A056": {
+    "ajuste_tmax": 1.44,
+    "ajuste_tmin": -1.77,
+    "ajuste_umidade": 7.01,
+    "fator_chuva": 0.86
+  },
+  "A011": {
+    "ajuste_tmax": 1.25,
+    "ajuste_tmin": -0.36,
+    "ajuste_umidade": -0.48,
+    "fator_chuva": 0.95
+  },
+  "A023": {
+    "ajuste_tmax": 1.98,
+    "ajuste_tmin": 0.11,
+    "ajuste_umidade": 5.03,
+    "fator_chuva": 0.8
+  },
+  "A032": {
+    "ajuste_tmax": 1.51,
+    "ajuste_tmin": -0.04,
+    "ajuste_umidade": 1.15,
+    "fator_chuva": 0.8
+  },
+  "A029": {
+    "ajuste_tmax": 0.18,
+    "ajuste_tmin": -0.8,
+    "ajuste_umidade": 9.58,
+    "fator_chuva": 1.3
+  },
+  "A036": {
+    "ajuste_tmax": 1.71,
+    "ajuste_tmin": 0.14,
+    "ajuste_umidade": 2.85,
+    "fator_chuva": 0.8
+  },
+  "A033": {
+    "ajuste_tmax": 1.8,
+    "ajuste_tmin": -0.53,
+    "ajuste_umidade": 1.65,
+    "fator_chuva": 0.86
+  },
+  "A026": {
+    "ajuste_tmax": 1.63,
+    "ajuste_tmin": -0.81,
+    "ajuste_umidade": 7.36,
+    "fator_chuva": 0.93
+  },
+  "A031": {
+    "ajuste_tmax": 1.21,
+    "ajuste_tmin": -1.02,
+    "ajuste_umidade": 9.75,
+    "fator_chuva": 1.11
+  }
+}

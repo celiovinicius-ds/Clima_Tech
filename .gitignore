@@ -5,3 +5,4 @@ __pycache__/
 .streamlit/
 *.zip
 rascunho.py
+data/clima_2026.parquet
