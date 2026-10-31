@@ -1,4 +1,5 @@
-import sqlite3
+import glob
+import re
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -47,14 +48,31 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Conexão / Caminho com a Base de Dados Parquet
-DATA_PATH = Path("data/clima_2026.parquet")
+DATA_DIR = Path("data")
+
+@st.cache_data(ttl=600)
+def obter_arquivos_anos():
+    """Identifica todos os arquivos clima_YYYY.parquet na pasta data de forma dinâmica."""
+    padrao = re.compile(r"clima_(\d{4})\.parquet$")
+    mapa_anos = {}
+    if DATA_DIR.exists():
+        for arq in DATA_DIR.glob("clima_*.parquet"):
+            match = padrao.search(arq.name)
+            if match:
+                ano = match.group(1)
+                mapa_anos[ano] = arq
+    return mapa_anos
 
 @st.cache_data(ttl=600)
 def carregar_municipios():
-    if not DATA_PATH.exists():
+    """Lê a lista de municípios usando o arquivo do ano mais recente disponível."""
+    mapa_anos = obter_arquivos_anos()
+    if not mapa_anos:
         return pd.DataFrame()
-    df = pd.read_parquet(DATA_PATH)
+    ano_recente = sorted(mapa_anos.keys(), reverse=True)[0]
+    caminho = mapa_anos[ano_recente]
+    
+    df = pd.read_parquet(caminho, columns=["codigo_ibge", "municipio"])
     if df.empty:
         return pd.DataFrame()
     df_m = df[["codigo_ibge", "municipio"]].drop_duplicates().sort_values("municipio")
@@ -63,20 +81,28 @@ def carregar_municipios():
 
 @st.cache_data(ttl=600)
 def carregar_anos_disponiveis(codigo_ibge):
-    if not DATA_PATH.exists():
-        return []
-    df = pd.read_parquet(DATA_PATH, columns=["codigo_ibge", "data"])
-    df = df[df["codigo_ibge"] == codigo_ibge]
-    if df.empty:
-        return []
-    df["ano"] = pd.to_datetime(df["data"]).dt.year.astype(str)
-    return sorted(df["ano"].unique().tolist(), reverse=True)
+    """Verifica quais anos contêm dados gravados para o município selecionado."""
+    mapa_anos = obter_arquivos_anos()
+    anos_com_dados = []
+    
+    for ano, caminho in sorted(mapa_anos.items(), reverse=True):
+        try:
+            df = pd.read_parquet(caminho, columns=["codigo_ibge"])
+            if (df["codigo_ibge"] == codigo_ibge).any():
+                anos_com_dados.append(ano)
+        except Exception:
+            continue
+            
+    return anos_com_dados
 
 @st.cache_data(ttl=300)
 def carregar_dados_climaticos(codigo_ibge, ano):
-    if not DATA_PATH.exists():
+    """Carrega dinamicamente o arquivo Parquet específico do ano solicitado."""
+    caminho = DATA_DIR / f"clima_{ano}.parquet"
+    if not caminho.exists():
         return pd.DataFrame()
-    df = pd.read_parquet(DATA_PATH)
+        
+    df = pd.read_parquet(caminho)
     df = df[df["codigo_ibge"] == codigo_ibge].copy()
     if df.empty:
         return pd.DataFrame()
@@ -87,7 +113,7 @@ def carregar_dados_climaticos(codigo_ibge, ano):
     # Trava de segurança física contra valores anômalos/corrompidos na leitura
     df["temp_max"] = df["temp_max"].clip(15.0, 43.0)
     df["temp_min"] = df["temp_min"].clip(5.0, 30.0)
-    df["chuva_mm"] = df["chuva_mm"].clip(0.0, 150.0) # Evita tempestades fantásticas diárias acima de 150mm
+    df["chuva_mm"] = df["chuva_mm"].clip(0.0, 150.0)  # Evita tempestades fantásticas diárias acima de 150mm
     
     df["temperatura_max"] = df["temp_max"]
     df["temperatura_min"] = df["temp_min"]
@@ -111,7 +137,7 @@ st.sidebar.title("🌦️ Filtros de Análise")
 df_municipios = carregar_municipios()
 
 if df_municipios.empty:
-    st.error("Arquivo de dados não encontrado. Verifique se o caminho data/clima_2026.parquet existe.")
+    st.error("Nenhuma base de dados encontrada na pasta data/. Verifique os arquivos Parquet.")
     st.stop()
 
 municipio_selecionado = st.sidebar.selectbox(
