@@ -3,6 +3,8 @@ import io
 import json
 import time
 import sys
+import os
+from pathlib import Path
 import pandas as pd
 import requests
 
@@ -12,16 +14,15 @@ try:
 except ModuleNotFoundError:
     from transform import aplicar_calibracao
 
-# Se passar o ano no terminal (ex: python etl/processar_anos.py 2022), usa ele.
-# Senão, pergunta interativamente no console.
 if len(sys.argv) > 1:
     ANO = str(sys.argv[1]).strip()
 else:
-    ANO = input("Digite o ano que deseja processar (ex: 2022): ").strip()
+    ANO = input("Digite o ano que deseja processar (ex: 2021): ").strip()
 
 ZIP_PATH = f"{ANO}.zip"
 JSON_MUNICIPIOS = "data/municipios_go.json"
 OUTPUT_PARQUET = f"data/clima_{ANO}.parquet"
+TEMP_RAW_PARQUET = f"data/temp_raw_{ANO}.parquet"
 
 print(f"\n--- Iniciando Processamento do Ano: {ANO} ---")
 
@@ -42,7 +43,6 @@ try:
             with z.open(nome_arq) as f:
                 conteudo = io.TextIOWrapper(f, encoding="latin-1")
                 
-                # Leitura do cabeçalho para pegar o nome da estação
                 linhas_cabecalho = [conteudo.readline() for _ in range(8)]
                 nome_estacao = linhas_cabecalho[1].split(";")[1].strip().upper()
                 
@@ -79,14 +79,30 @@ except FileNotFoundError:
     print(f"[AVISO] O arquivo {ZIP_PATH} não foi encontrado na raiz. O script seguirá apenas com dados Open-Meteo calibrados.")
     df_inmet_total = pd.DataFrame()
 
-# 3. Baixar dados da Open-Meteo para os 246 municípios no ano selecionado com feedback visual
+# 3. Baixar dados da Open-Meteo com Sistema de Checkpoint / Retomada
 print(f"\n2. Baixando série histórica de {ANO} da Open-Meteo para 246 municípios...")
-registros_openmeteo = []
+
+# Carregar checkpoint se já existir
+if os.path.exists(TEMP_RAW_PARQUET):
+    df_checkpoint = pd.read_parquet(TEMP_RAW_PARQUET)
+    ibges_processados = set(df_checkpoint["codigo_ibge"].unique())
+    registros_openmeteo = [df_checkpoint]
+    print(f"[RECUPERAÇÃO] Encontrado progresso anterior: {len(ibges_processados)} municípios já salvos.")
+else:
+    ibges_processados = set()
+    registros_openmeteo = []
+
 total_m = len(municipios)
 
 for i, m in enumerate(municipios, 1):
-    nome = m["nome"]
     ibge = m["codigo_ibge"]
+    nome = m["nome"]
+    
+    # Pula as cidades que já foram baixadas e salvas em disco
+    if ibge in ibges_processados:
+        print(f"\r[{i:03d}/{total_m:03d}] ({(i/total_m)*100:5.1f}%) [CACHE] Já baixado: {nome:<30}", end="", flush=True)
+        continue
+
     lat = m["latitude"]
     lon = m["longitude"]
     
@@ -103,10 +119,9 @@ for i, m in enumerate(municipios, 1):
         try:
             resposta = requests.get(url, timeout=15)
             
-            # Tratamento caso a API devolva 429 (Too Many Requests)
             if resposta.status_code == 429:
-                print(f"\n[AVISO] Limite da API atingido. Aguardando 10 segundos antes de tentar novamente...")
-                time.sleep(10)
+                print(f"\n[AVISO] Limite da API atingido. Aguardando 15 segundos antes de tentar novamente...")
+                time.sleep(15)
                 tentativas += 1
                 continue
                 
@@ -122,9 +137,13 @@ for i, m in enumerate(municipios, 1):
                     'umidade_media': res['daily']['relative_humidity_2m_mean']
                 })
                 registros_openmeteo.append(df_m)
-                sucesso = True
+                ibges_processados.add(ibge)
                 
-                # Feedback visual na mesma linha com contador, porcentagem e município
+                # Salva em disco a cada nova cidade baixada para garantir que nenhum dado se perca
+                df_acumulado = pd.concat(registros_openmeteo, ignore_index=True)
+                df_acumulado.to_parquet(TEMP_RAW_PARQUET, index=False)
+                
+                sucesso = True
                 porcentagem = (i / total_m) * 100
                 print(f"\r[{i:03d}/{total_m:03d}] ({porcentagem:5.1f}%) Baixado: {nome:<30}", end="", flush=True)
         except Exception:
@@ -133,16 +152,17 @@ for i, m in enumerate(municipios, 1):
             
     time.sleep(0.15)
 
-print()  # Quebra de linha após concluir os 246 municípios
+print()
 
-if len(registros_openmeteo) < 240:
-    raise RuntimeError(f"Download incompleto ({len(registros_openmeteo)} municípios). Processo cancelado para proteger a integridade.")
+df_om_bruto = pd.read_parquet(TEMP_RAW_PARQUET)
 
-df_om_bruto = pd.concat(registros_openmeteo, ignore_index=True)
+if df_om_bruto["codigo_ibge"].nunique() < 240:
+    raise RuntimeError(f"Download incompleto ({df_om_bruto['codigo_ibge'].nunique()} municípios). Processo pausado. Execute novamente após a API liberar.")
+
 df_final = aplicar_calibracao(df_om_bruto)
 df_final['data'] = pd.to_datetime(df_final['data'])
 
-# Converte colunas numéricas para float64 para evitar incompatibilidade com médias do INMET
+# Converte colunas numéricas para float64
 for col in ['temp_max', 'temp_min', 'chuva_mm', 'umidade_media']:
     df_final[col] = df_final[col].astype('float64')
 
@@ -167,7 +187,11 @@ if not df_inmet_total.empty:
                     if pd.notna(linha['umidade_media']):
                         df_final.loc[idx, 'umidade_media'] = float(linha['umidade_media'])
 
-# 5. Salvar Parquet com o nome dinâmico do ano
+# 5. Salvar Parquet final e remover checkpoint temporário
 df_final['data'] = df_final['data'].dt.strftime('%Y-%m-%d')
 df_final.to_parquet(OUTPUT_PARQUET, index=False)
-print(f"\n[SUCESSO] Base final de {ANO} gravada em: {OUTPUT_PARQUET}")
+
+if os.path.exists(TEMP_RAW_PARQUET):
+    os.remove(TEMP_RAW_PARQUET)
+
+print(f"\n[SUCESSO] Base final de {ANO} gravada com sucesso em: {OUTPUT_PARQUET}")
