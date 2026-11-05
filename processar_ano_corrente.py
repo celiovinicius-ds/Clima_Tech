@@ -13,7 +13,6 @@ PARQUET_PATH = Path(f"data/clima_{ANO_CORRENTE}.parquet")
 JSON_MUNICIPIOS = Path("data/municipios_go.json")
 
 LIMIAR_MINIMO_CHUVA = 1000.0
-GRADIENTE_TERMICO_METRO = 0.0065
 
 def normalizar_texto(texto):
     if not texto:
@@ -30,16 +29,16 @@ def calcular_haversine(lat1, lon1, lat2, lon2):
     return 2 * r * np.arctan2(np.sqrt(a), np.sqrt(1 - a))
 
 print(f"\n=======================================================")
-print(f" PIPELINE DEFINITIVO: CORREÇÃO COMPLETA GOIÁS {ANO_CORRENTE}")
+print(f" PIPELINE: MODELAGEM FÍSICA GENERALIZADA DE GOIÁS ({ANO_CORRENTE})")
 print(f"=======================================================")
 
 if not PARQUET_PATH.exists():
-    raise FileNotFoundError(f"Ficheiro '{PARQUET_PATH}' não encontrado.")
+    raise FileNotFoundError(f"Arquivo '{PARQUET_PATH}' não encontrado.")
 
 if not ZIP_PATH.exists():
-    raise FileNotFoundError(f"Ficheiro '{ZIP_PATH}' não encontrado.")
+    raise FileNotFoundError(f"Arquivo '{ZIP_PATH}' não encontrado.")
 
-# 1. Carregar municípios
+# 1. Carregar municípios e altitudes reais do JSON
 with open(JSON_MUNICIPIOS, "r", encoding="utf-8") as f:
     lista_mun = json.load(f)
 
@@ -49,10 +48,10 @@ for m in lista_mun:
     geo_map[nome] = {
         "lat": float(m["latitude"]),
         "lon": float(m["longitude"]),
-        "alt": float(m.get("altitude", 600.0) or 600.0)
+        "alt": float(m.get("altitude", 650.0))
     }
 
-# 2. Carregar base de dados e padronizar datas como string YYYY-MM-DD
+# 2. Carregar base de dados existente
 df = pd.read_parquet(PARQUET_PATH)
 df["data"] = pd.to_datetime(df["data"]).dt.strftime("%Y-%m-%d")
 
@@ -61,7 +60,7 @@ for col in ["temp_max", "temp_min", "chuva_mm", "umidade_media"]:
 
 mapa_nomes = {normalizar_texto(nome): nome for nome in df["municipio"].unique()}
 
-# 3. Ler dados das estações INMET
+# 3. Ler medições oficiais das estações do INMET
 dados_inmet_lista = []
 with zipfile.ZipFile(ZIP_PATH, "r") as z:
     arquivos_go = [n for n in z.namelist() if "_GO_" in n and n.upper().endswith(".CSV")]
@@ -134,6 +133,7 @@ with zipfile.ZipFile(ZIP_PATH, "r") as z:
 
 df_inmet = pd.concat(dados_inmet_lista, ignore_index=True)
 data_limite_inmet = df_inmet["DATA"].max()
+print(f"Dados oficiais processados até: {data_limite_inmet}")
 
 # 4. Mapear estações do INMET
 estacoes_mapeadas = {}
@@ -154,13 +154,10 @@ for estacao_raw in df_inmet["estacao_nome"].unique():
         totais_inmet[mun_match] = sub["precip_inmet"].dropna().sum()
 
 estacoes_ancoras = [m for m, total in totais_inmet.items() if total >= LIMIAR_MINIMO_CHUVA]
-estacoes_deficit = [m for m, total in totais_inmet.items() if total < LIMIAR_MINIMO_CHUVA]
+mascara_datas_inmet = df["data"] <= data_limite_inmet
 
-print(f"Estações Âncoras (>= 1000 mm): {len(estacoes_ancoras)}")
-print(f"Estações com Défice (< 1000 mm): {len(estacoes_deficit)} -> {estacoes_deficit}")
-
-# 5. ETAPA 1: Aplicar dados das estações Âncoras
-for mun in estacoes_ancoras:
+# 5. ETAPA 1: Estações físicas oficiais (Inalteradas)
+for mun in estacoes_mapeadas.keys():
     estacao_raw = estacoes_mapeadas[mun]
     sub = df_inmet[df_inmet["estacao_nome"] == estacao_raw]
     
@@ -169,101 +166,113 @@ for mun in estacoes_ancoras:
     sub_dict_umid = dict(zip(sub["DATA"], sub["umid_inmet"]))
     sub_dict_prec = dict(zip(sub["DATA"], sub["precip_inmet"]))
     
-    idx = (df["municipio"] == mun) & (df["data"] <= data_limite_inmet)
-    datas = df.loc[idx, "data"]
-    
-    df.loc[idx, "temp_max"] = datas.map(sub_dict_tmax).fillna(df.loc[idx, "temp_max"]).round(1)
-    df.loc[idx, "temp_min"] = datas.map(sub_dict_tmin).fillna(df.loc[idx, "temp_min"]).round(1)
-    df.loc[idx, "umidade_media"] = datas.map(sub_dict_umid).fillna(df.loc[idx, "umidade_media"]).round(0)
-    df.loc[idx, "chuva_mm"] = datas.map(sub_dict_prec).fillna(df.loc[idx, "chuva_mm"]).round(1)
-    df.loc[idx, "fonte_dado"] = "INMET (Oficial)"
-
-# 6. ETAPA 2: Corrigir estações com défice através da âncora mais próxima
-for mun in estacoes_deficit:
-    estacao_raw = estacoes_mapeadas[mun]
-    sub = df_inmet[df_inmet["estacao_nome"] == estacao_raw]
-    
-    lat_m, lon_m = geo_map[mun]["lat"], geo_map[mun]["lon"]
-    menor_dist = float("inf")
-    ancora_prox = None
-    for anc in estacoes_ancoras:
-        d = calcular_haversine(lat_m, lon_m, geo_map[anc]["lat"], geo_map[anc]["lon"])
-        if d < menor_dist:
-            menor_dist = d
-            ancora_prox = anc
-            
-    # Obter série de chuva da âncora vizinha
-    sub_ancora = df[(df["municipio"] == ancora_prox) & (df["data"] <= data_limite_inmet)]
-    dict_chuva_ancora = dict(zip(sub_ancora["data"], sub_ancora["chuva_mm"]))
-    
-    sub_dict_tmax = dict(zip(sub["DATA"], sub["tmax_inmet"]))
-    sub_dict_tmin = dict(zip(sub["DATA"], sub["tmin_inmet"]))
-    sub_dict_umid = dict(zip(sub["DATA"], sub["umid_inmet"]))
-    
-    idx = (df["municipio"] == mun) & (df["data"] <= data_limite_inmet)
+    idx = (df["municipio"] == mun) & mascara_datas_inmet
     datas = df.loc[idx, "data"]
     
     df.loc[idx, "temp_max"] = datas.map(sub_dict_tmax).fillna(df.loc[idx, "temp_max"]).round(1)
     df.loc[idx, "temp_min"] = datas.map(sub_dict_tmin).fillna(df.loc[idx, "temp_min"]).round(1)
     df.loc[idx, "umidade_media"] = datas.map(sub_dict_umid).fillna(df.loc[idx, "umidade_media"]).round(0)
     
-    # Chuva transferida com ajuste de relevo
-    diff_alt = geo_map[mun]["alt"] - geo_map[ancora_prox]["alt"]
-    fator_relevo = np.clip(1.0 + (diff_alt * 0.0003), 0.90, 1.25)
-    
-    chuva_referencia = datas.map(dict_chuva_ancora).fillna(0.0) * fator_relevo
-    df.loc[idx, "chuva_mm"] = chuva_referencia.round(1)
-    df.loc[idx, "fonte_dado"] = "INMET / Calibrado Regional (Âncora)"
+    if mun in estacoes_ancoras:
+        df.loc[idx, "chuva_mm"] = datas.map(sub_dict_prec).fillna(df.loc[idx, "chuva_mm"]).round(1)
+        df.loc[idx, "fonte_dado"] = "INMET (Oficial)"
+    else:
+        lat_m, lon_m = geo_map[mun]["lat"], geo_map[mun]["lon"]
+        ancora_prox = min(estacoes_ancoras, key=lambda a: calcular_haversine(lat_m, lon_m, geo_map[a]["lat"], geo_map[a]["lon"]))
+        sub_anc = df[(df["municipio"] == ancora_prox) & mascara_datas_inmet]
+        dict_anc = dict(zip(sub_anc["data"], sub_anc["chuva_mm"]))
+        diff_alt = geo_map[mun]["alt"] - geo_map[ancora_prox]["alt"]
+        fator_relevo = np.clip(1.0 + (diff_alt * 0.0002), 0.90, 1.15)
+        df.loc[idx, "chuva_mm"] = (datas.map(dict_anc).fillna(0.0) * fator_relevo).round(1)
+        df.loc[idx, "fonte_dado"] = "INMET (Termométrica) / Calibrado"
 
-# 7. ETAPA 3: Calibrar todos os 221 municípios restantes sem estação
+# 6. ETAPA 2: Função Física Universal para todas as 221 cidades restantes
 cidades_restantes = [m for m in df["municipio"].unique() if m not in estacoes_mapeadas]
-print(f"A calibrar {len(cidades_restantes)} municípios sem estação física...")
+print(f"Aplicando física contínua para todas as {len(cidades_restantes)} cidades...")
 
 todas_estacoes = list(estacoes_mapeadas.keys())
+
 for cid_alvo in cidades_restantes:
     if cid_alvo not in geo_map:
         continue
     
     lat_a, lon_a, alt_a = geo_map[cid_alvo]["lat"], geo_map[cid_alvo]["lon"], geo_map[cid_alvo]["alt"]
     
+    # 1. Encontrar a estação INMET física mais próxima
     menor_d = float("inf")
     est_prox = None
-    for cid_est in todas_estacoes:
-        if cid_est in geo_map:
-            d = calcular_haversine(lat_a, lon_a, geo_map[cid_est]["lat"], geo_map[cid_est]["lon"])
-            if d < menor_d:
-                menor_d = d
-                est_prox = cid_est
-                
+    for est in todas_estacoes:
+        d = calcular_haversine(lat_a, lon_a, geo_map[est]["lat"], geo_map[est]["lon"])
+        if d < menor_d:
+            menor_d = d
+            est_prox = est
+            
     if not est_prox:
         continue
 
-    diff_alt = alt_a - geo_map[est_prox]["alt"]
-    ajuste_altitude = - (diff_alt * GRADIENTE_TERMICO_METRO)
-    fator_relevo = np.clip(1.0 + (diff_alt * 0.0003), 0.90, 1.25)
+    idx_alvo = (df["municipio"] == cid_alvo) & mascara_datas_inmet
+    idx_est = (df["municipio"] == est_prox) & mascara_datas_inmet
+    datas_alvo = df.loc[idx_alvo, "data"]
     
-    sub_ref = df[(df["municipio"] == est_prox) & (df["data"] <= data_limite_inmet)]
-    ref_tmax = dict(zip(sub_ref["data"], sub_ref["temp_max"]))
-    ref_tmin = dict(zip(sub_ref["data"], sub_ref["temp_min"]))
-    ref_umid = dict(zip(sub_ref["data"], sub_ref["umidade_media"]))
-    ref_prec = dict(zip(sub_ref["data"], sub_ref["chuva_mm"]))
+    sub_ref = df[idx_est].set_index("data")
+    tmax_ref = sub_ref["temp_max"].reindex(datas_alvo).values
+    tmin_ref = sub_ref["temp_min"].reindex(datas_alvo).values
+    umid_ref = sub_ref["umidade_media"].reindex(datas_alvo).values
     
-    idx = (df["municipio"] == cid_alvo) & (df["data"] <= data_limite_inmet)
-    datas = df.loc[idx, "data"]
+    alt_ref = geo_map[est_prox]["alt"]
+    diff_alt = alt_a - alt_ref
     
-    df.loc[idx, "temp_max"] = (datas.map(ref_tmax) + ajuste_altitude).round(1)
-    df.loc[idx, "temp_min"] = (datas.map(ref_tmin) + ajuste_altitude).round(1)
-    df.loc[idx, "umidade_media"] = datas.map(ref_umid).round(0)
-    df.loc[idx, "chuva_mm"] = (datas.map(ref_prec) * fator_relevo).round(1)
-    df.loc[idx, "fonte_dado"] = "Open-Meteo (Calibrado Spatial/INMET)"
+    # --- MODELO FÍSICO CONTÍNUO ---
+    
+    # 1. Mínima (Resfriamento noturno por desnível): 0.60 °C a cada 100m
+    delta_tmin = - (diff_alt * 0.0060)
+    tmin_estimada = tmin_ref + delta_tmin
+    
+    # 2. Máxima (Aquecimento diurno + Ventilação de Relevo):
+    # - Gradiente base da tarde: 0.75 °C a cada 100m de desnível relativo
+    # - Efeito de desacoplamento térmico de platô contínuo:
+    #   Quanto mais alta a cota absoluta acima de 700m, menor a retenção de calor diurno.
+    #   Quanto mais baixa a cota abaixo de 600m, maior o acúmulo de ar quente na bacia.
+    if alt_a > 700.0:
+        ajuste_plato = - ((alt_a - 700.0) / 100.0) * 0.75
+    elif alt_a < 500.0:
+        ajuste_plato = + ((500.0 - alt_a) / 100.0) * 0.60
+    else:
+        ajuste_plato = 0.0
+        
+    delta_tmax = - (diff_alt * 0.0075) + ajuste_plato
+    tmax_estimada = tmax_ref + delta_tmax
+    
+    # Umidade relativa ajustada por altitude (locais mais altos retêm umidade relativa ligeiramente maior)
+    ajuste_umid = (diff_alt * 0.015)
+    
+    df.loc[idx_alvo, "temp_max"] = np.round(tmax_estimada, 1)
+    df.loc[idx_alvo, "temp_min"] = np.round(tmin_estimada, 1)
+    df.loc[idx_alvo, "umidade_media"] = np.round(umid_ref + ajuste_umid, 0).clip(10, 100)
+    df.loc[idx_alvo, "fonte_dado"] = "INMET / Física Contínua Topográfica"
 
-# 8. Auditoria de Verificação no Terminal
-print("\n--- RESULTADOS FINAIS ACUMULADOS (2026) ---")
-cidades_check = ["Goiânia", "Aparecida de Goiânia", "Alto Paraíso de Goiás", "Luziânia", "Rio Verde", "Mineiros", "Cristalina"]
-for cid in cidades_check:
-    sub_c = df[(df["municipio"] == cid) & (df["data"] <= data_limite_inmet)]
-    print(f"   {cid:<24} | Acumulado: {sub_c['chuva_mm'].sum():.1f} mm | T.Máx: {sub_c['temp_max'].max():.1f} °C | Fonte: {sub_c['fonte_dado'].iloc[0]}")
+# 7. Conferência Altimétrica em todas as faixas do Estado
+print("\n--- AUDITORIA TÉRMICA POR FAIXAS DE ALTITUDE (2026) ---")
+cidades_auditoria = [
+    "São Miguel do Araguaia",  # Baixada (~315m)
+    "Itumbiara",               # Sul baixo (~448m)
+    "Goiás",                   # Transição (~520m)
+    "Goiânia",                 # Padrão (~749m) - Oficial INMET
+    "Aparecida de Goiânia",    # Metropolitana (~808m)
+    "Trindade",                # Metropolitana (~756m)
+    "Abadia de Goiás",         # Metropolitana (~898m)
+    "Luziânia",                # Planalto Leste (~960m)
+    "Anápolis",                # Planalto Central (~1017m)
+    "Cristalina",              # Serra (~1189m)
+    "Alto Paraíso de Goiás"    # Chapada (~1228m)
+]
 
-# 9. Gravar base consolidada
+for cid in cidades_auditoria:
+    if cid in geo_map:
+        sub_c = df[(df["municipio"] == cid) & mascara_datas_inmet]
+        alt = geo_map[cid]["alt"]
+        print(f"   {cid:<24} | Alt: {alt:>5.0f}m | T.Máx Média: {sub_c['temp_max'].mean():.1f} °C | T.Mín Média: {sub_c['temp_min'].mean():.1f} °C | Máx Abs: {sub_c['temp_max'].max():.1f} °C | Mín Abs: {sub_c['temp_min'].min():.1f} °C")
+
+# 8. Gravar Parquet
 df.to_parquet(PARQUET_PATH, index=False)
-print(f"\n[SUCESSO] Base gravada em: {PARQUET_PATH}\n")
+print(f"\n[SUCESSO] Base 100% calibrada gravada em: {PARQUET_PATH}\n")
